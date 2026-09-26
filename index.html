@@ -180,6 +180,7 @@
             border: 1px solid var(--border);
             filter: grayscale(80%) contrast(110%) brightness(70%);
             transition: all 0.4s ease;
+            cursor: pointer; /* Cambia el cursor a una manito para indicar que es clickeable */
         }
 
         .visual-grid img:hover {
@@ -215,6 +216,49 @@
             background-color: rgba(255, 255, 255, 0.05);
         }
 
+        /* --- ESTILOS PARA EL VISOR DE IMÁGENES (LIGHTBOX) --- */
+        .modal {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px); /* Efecto borroso en el fondo */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from {transform: scale(0.95); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: var(--text-muted);
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--accent);
+        }
+
     </style>
 </head>
 <body>
@@ -237,11 +281,10 @@
             <p>Como miembro fundador de los colectivos Dark Resistance, Altered States y Viper Bol, ha dedicado años a cimentar la escena desde sus bases. Además, es director creativo y conceptual de Proton.2050, así como cofundador de Kluxter Bol (Potosí). Es un promotor clave del género Hard Dance y música electrónica en Bolivia, destacando por su técnica de mezcla precisa y versatilidad técnica.</p>
         </section>
 
-        <!-- GALERÍA VISUAL (AHORA CON LA RUTA HACIA TU CARPETA) -->
+        <!-- GALERÍA VISUAL -->
         <section id="galeria">
             <h2>Registro Fotográfico</h2>
             <div class="visual-grid">
-               <div class="visual-grid">
                 <img src="web-poimandres/651013150_18031266488788200_2370242049409830588_n.jpg">
                 <img src="web-poimandres/651231780_18031266506788200_1978230341191308344_n.jpg">
                 <img src="web-poimandres/DSC00819.JPG">
@@ -253,8 +296,7 @@
                 <img src="web-poimandres/photo_2023-07-10_05-55-15.jpg">
                 <img src="web-poimandres/photo_2025-03-17_00-03-02.jpg">
             </div>
-            </div>
-            <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-muted);">Pasa el cursor sobre las imágenes para ver el color original.</p>
+            <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-muted);">Pasa el cursor sobre las imágenes para ver el color original. Haz clic para expandir.</p>
         </section>
 
         <!-- ENFOQUE SONORO -->
@@ -378,6 +420,40 @@
         </footer>
 
     </div>
+
+    <!-- CONTENEDOR DEL VISOR DE IMÁGENES -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <!-- SCRIPT PARA EL FUNCIONAMIENTO DEL VISOR -->
+    <script>
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImg");
+        const closeBtn = document.getElementsByClassName("close-modal")[0];
+        const images = document.querySelectorAll(".visual-grid img");
+
+        // Al hacer clic en cualquier foto de la galería
+        images.forEach(img => {
+            img.addEventListener("click", function() {
+                modal.style.display = "flex";
+                modalImg.src = this.src; // Pone la ruta de la foto clickeada en la imagen grande
+            });
+        });
+
+        // Al hacer clic en la "X"
+        closeBtn.addEventListener("click", function() {
+            modal.style.display = "none";
+        });
+
+        // Al hacer clic en cualquier parte fuera de la imagen (el fondo oscuro)
+        modal.addEventListener("click", function(event) {
+            if (event.target !== modalImg) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
 
 </body>
 </html>
