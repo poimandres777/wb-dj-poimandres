@@ -311,8 +311,8 @@
             <h2>Archivo Multimedia</h2>
             
             <div class="gallery-tabs">
-                <span class="tab-btn active" id="btn-photos" onmouseenter="switchTab('photos')">[ FOTOGRAFÍAS ]</span>
-                <span class="tab-btn" id="btn-videos" onmouseenter="switchTab('videos')">[ VIDEOCLIPS ]</span>
+                <span class="tab-btn active" id="btn-photos" onmouseenter="switchTab('photos')" onclick="switchTab('photos')">[ FOTOGRAFÍAS ]</span>
+                <span class="tab-btn" id="btn-videos" onmouseenter="switchTab('videos')" onclick="switchTab('videos')">[ VIDEOCLIPS ]</span>
             </div>
 
             <!-- CUADRÍCULA DE FOTOS -->
@@ -342,7 +342,7 @@
                 <iframe src="https://player.vimeo.com/video/1230438596?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
             </div>
 
-            <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-muted);">Pasa el cursor sobre las pestañas para intercambiar. Haz clic en las imágenes o usa los controles del video para expandirlos.</p>
+            <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-muted);">Pasa el cursor o toca las pestañas para intercambiar. Haz clic en las imágenes o usa los controles del video para expandirlos.</p>
         </section>
 
         <!-- ENFOQUE SONORO -->
@@ -475,7 +475,7 @@
 
     <!-- SCRIPT PARA PESTAÑAS Y VISOR -->
     <script>
-        // Función para cambiar de pestaña al pasar el cursor
+        // Función para cambiar de pestaña al pasar el cursor o hacer clic
         function switchTab(tab) {
             const tabPhotos = document.getElementById('tab-photos');
             const tabVideos = document.getElementById('tab-videos');
