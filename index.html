@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poimandres | DJ & Promotor</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;700&display=swap');
+
+        :root {
+            --bg-color: #050505;
+            --text-main: #d4d4d4;
+            --text-muted: #888888;
+            --accent: #ffffff;
+            --border: #222222;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.7;
+            font-size: 15px;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+            z-index: 999;
+            background-size: 100% 2px;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 30px;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            color: var(--accent);
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--border);
+            display: inline-block;
+            padding-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            font-size: 1rem;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        section {
+            margin-bottom: 70px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        .interview-block {
+            background: #0a0a0a;
+            border-left: 2px solid var(--border);
+            padding: 25px;
+        }
+
+        .qa-item {
+            margin-bottom: 25px;
+        }
+
+        .qa-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .question {
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .answer {
+            color: var(--text-main);
+            padding-left: 15px;
+            border-left: 1px solid #333;
+        }
+
+        .genre-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .genre-tag {
+            border: 1px solid var(--border);
+            padding: 8px 15px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        ul {
+            list-style-type: none;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .highlight-text {
+            color: var(--accent);
+        }
+
+        .visual-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .visual-grid img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border: 1px solid var(--border);
+            filter: grayscale(80%) contrast(110%) brightness(70%);
+            transition: all 0.4s ease;
+        }
+
+        .visual-grid img:hover {
+            filter: grayscale(0%) contrast(100%) brightness(100%);
+            border-color: var(--accent);
+            transform: scale(1.02);
+            z-index: 10;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding-top: 30px;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            border: 1px solid var(--border);
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        
+        .social-links a:hover {
+            border-color: var(--accent);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- CABECERA -->
+        <header>
+            <h1>POIMANDRES</h1>
+            <div class="subtitle">
+                Bryan Antonio Quiroga Gomez<br>
+                DJ & Promotor Musical | Potosí, Bolivia | Est. 2018
+            </div>
+        </header>
+
+        <!-- BIOGRAFÍA -->
+        <section id="biografia">
+            <h2>Biografía</h2>
+            <p>DJ y promotor musical originario de Potosí, Bolivia. Inició su carrera profesional en 2018. Respaldado por una trayectoria profesional que ya se acerca a la década, este artista no es solo un operador técnico, sino un pilar fundamental de la cultura electrónica local.</p>
+            <p>Como miembro fundador de los colectivos Dark Resistance, Altered States y Viper Bol, ha dedicado años a cimentar la escena desde sus bases. Además, es director creativo y conceptual de Proton.2050, así como cofundador de Kluxter Bol (Potosí). Es un promotor clave del género Hard Dance y música electrónica en Bolivia, destacando por su técnica de mezcla precisa y versatilidad técnica.</p>
+        </section>
+
+        <!-- GALERÍA VISUAL -->
+        <section id="galeria">
+            <h2>Registro Fotográfico</h2>
+            <div class="visual-grid">
+                <img src="651013150_18031266488788200_2370242049409830588_n.jpg" alt="Poimandres en cabina con iluminación roja">
+                <img src="651231780_18031266506788200_1978230341191308344_n.jpg" alt="Poimandres mezclando en vivo">
+                <img src="photo_2026-03-25_22-51-04.jpg" alt="Vista del DJ en el escenario">
+                <img src="photo_2026-03-25_22-51-02.jpg" alt="Efecto visual de movimiento en cabina">
+                <img src="photo_2025-03-17_00-03-02.jpg" alt="Setup técnico y mezcla">
+                <img src="DSC00853.jpg" alt="Operación de compacteras">
+                <img src="DSC00819.jpg" alt="Presentación en vivo">
+                <img src="photo_2021-03-16_07-12-22.jpg" alt="Perspectiva desde la pista de baile">
+                <img src="photo_2026-01-09_03-05-44.jpg" alt="Ambiente de fiesta">
+                <img src="photo_2023-07-10_05-55-15.jpg" alt="Retrato promocional">
+            </div>
+            <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-muted);">Pasa el cursor sobre las imágenes para ver el color original.</p>
+        </section>
+
+        <!-- ENFOQUE SONORO -->
+        <section id="filosofia">
+            <h2>Filosofía Sonora y Técnica</h2>
+            <p>Utiliza su profunda formación en ingeniería no para imponer frialdad, sino para construir paisajes sonoros donde cada frecuencia tiene un propósito emocional. En sus manos, lo melódico y lo rítmico no solo suenan nítidos; respiran con intensidad propia.</p>
+            <p>En la pista es reconocido por crear un groove hipnótico que atrapa y conecta de inmediato. Su compromiso con la audiencia es total: posee una curaduría musical estricta y honesta, donde cada set es un viaje irrepetible diseñado para el momento presente.</p>
+            <p>Lo que verdaderamente lo distingue es su sensibilidad en la mezcla. Es de esos pocos selectores capaces de tejer canciones con una técnica tan fluida y natural que las "costuras" desaparecen. Cuando él toca, la tecnología se vuelve invisible y el sonido fluye como una sola historia ininterrumpida.</p>
+        </section>
+
+        <!-- ENTREVISTA -->
+        <section id="entrevista">
+            <h2>Manifiesto</h2>
+            <div class="interview-block">
+                <div class="qa-item">
+                    <div class="question">¿Qué es Poimandres?</div>
+                    <div class="answer">Es una entidad que me permite acceder al conocimiento necesario para ejecutar mi trabajo con excelencia. Es el medio a través del cual canalizo la técnica.</div>
+                </div>
+                <div class="qa-item">
+                    <div class="question">¿Qué busca generar en la pista?</div>
+                    <div class="answer">Busca conectar cuerpo, alma y mente al son de una perturbación espacio-temporal. El objetivo es alterar la percepción y sumergir al público en el sonido.</div>
+                </div>
+                <div class="qa-item">
+                    <div class="question">¿Qué le impulsó a ser DJ?</div>
+                    <div class="answer">El amor profundo por el sonido puro y la fascinación por las máquinas que lo generan.</div>
+                </div>
+                <div class="qa-item">
+                    <div class="question">Visión de la escena local:</div>
+                    <div class="answer">Hace falta objetividad. Debemos ser claros con nuestra identidad, asumir nuestro rol dentro del movimiento cultural y brindarnos como herramientas. Necesitamos forjar un puente sólido que dé visibilidad real tanto al talento artístico como al científico.</div>
+                </div>
+                <div class="qa-item">
+                    <div class="question">El objetivo en el escenario:</div>
+                    <div class="answer">Tengo la esperanza de conectar con el público de tal forma que la figura del DJ desaparezca; que no se fijen en quién lo hace, sino en lo que hace ese "quién" con el sonido.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GÉNEROS -->
+        <section id="generos">
+            <h2>Espectro Musical</h2>
+            <div class="genre-grid">
+                <div class="genre-tag">Techno</div>
+                <div class="genre-tag">Trance</div>
+                <div class="genre-tag">House</div>
+                <div class="genre-tag">Hard Dance</div>
+                <div class="genre-tag">Latin Club</div>
+                <div class="genre-tag">Hard Bounce</div>
+                <div class="genre-tag">Guaracha</div>
+                <div class="genre-tag">Latin Core</div>
+                <div class="genre-tag">NEW Perreo</div>
+                <div class="genre-tag">Break Beat</div>
+                <div class="genre-tag">IDM</div>
+                <div class="genre-tag">EBM</div>
+                <div class="genre-tag">Future Base</div>
+                <div class="genre-tag">Acid</div>
+                <div class="genre-tag">Industrial</div>
+                <div class="genre-tag">Forest</div>
+                <div class="genre-tag">HipHop</div>
+                <div class="genre-tag">Higtek</div>
+            </div>
+        </section>
+
+        <!-- TRAYECTORIA COMPLETA -->
+        <section id="trayectoria">
+            <h2>Trayectoria y Afiliaciones</h2>
+            
+            <h3>Afiliaciones Activas</h3>
+            <ul>
+                <li><span class="highlight-text">Revista:</span> Proton.2050</li>
+                <li><span class="highlight-text">Productoras:</span> Viper Bol, Kluxter Bol</li>
+                <li><span class="highlight-text">Colectivos:</span> Dark Resistance (Potosí), Altered States (Sucre)</li>
+            </ul>
+
+            <h3>Eventos Organizados</h3>
+            <p style="padding-left: 15px; color: var(--text-muted);">
+                K.E.P.L.E.R., BraveRave, Carne a Baal, NEBULA electro fest, Hypnotic Dance, Climax, Baraunda, Techno Oscuro, LariLari, Hidden Tech, Tata Danzanti, Valera, Valkyria, Bailoteo, Laberinto sonoro, Proton Sesions, sesiones de escucha activa, coffee party.
+            </p>
+
+            <h3>Presentaciones Destacadas</h3>
+            <ul>
+                <li>RCA (La Paz)</li>
+                <li>Sumjork Fest (Potosí)</li>
+                <li>Celina (La Paz)</li>
+                <li>Suapi Ufo (La Paz)</li>
+                <li>Imaynalla (Sucre)</li>
+                <li>Inti Remix (Sucre)</li>
+                <li>Cosmos festival cultural (Cochabamba)</li>
+                <li>Bass Equinox (Cochabamba)</li>
+                <li>Barranco Live</li>
+            </ul>
+
+            <h3>Próximos Proyectos</h3>
+            <ul>
+                <li>[ PRÓXIMAMENTE... ]</li>
+                <li>[ PRÓXIMAMENTE... ]</li>
+                <li>[ PRÓXIMAMENTE... ]</li>
+            </ul>
+        </section>
+
+        <!-- RIDER TÉCNICO COMPLETO -->
+        <section id="rider">
+            <h2>Rider Técnico</h2>
+            <ul>
+                <li><span class="highlight-text">Setup Estándar:</span> Mixer analógico y compacteras disponibles. (Se requiere aviso previo para el uso de CDs).</li>
+                <li><span class="highlight-text">Setup Performance:</span> 1 par de entradas estéreo (RCA/TS/TRS) para conectar equipos propios (Mixer Behringer Nox303/606, Efecteras Behringer TWEK ALIZER, Tarjeta de audio Traktor 8, Laptop, Teclado MIDI).</li>
+                <li><span class="highlight-text">Tiempos de Set (Headliner / Close Liner):</span> Mínimo 90 minutos.</li>
+                <li><span class="highlight-text">Tiempos de Set (Warm Up):</span> Mínimo 3 horas (incluye asistencia en prueba de sonido).</li>
+                <li><span class="highlight-text">Hospitalidad:</span> 1 botella de agua y 1 cenicero.</li>
+            </ul>
+        </section>
+
+        <!-- CONTACTO Y REDES (ENLACES ACTIVOS) -->
+        <footer>
+            <div class="social-links">
+                <!-- Solo debes cambiar TU_LINK_AQUI por la dirección web exacta de tu página -->
+                <a href="TU_LINK_AQUI" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/buzzkill.poi" target="_blank">Instagram</a>
+                <a href="TU_LINK_AQUI" target="_blank">Mixcloud</a>
+                <a href="https://wa.me/59163725473" target="_blank">WhatsApp</a>
+            </div>
+            <p style="margin-top: 30px; font-size: 0.8rem; color: var(--border);">© 2026 Poimandres</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
