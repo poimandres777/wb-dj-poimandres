@@ -167,23 +167,47 @@
             color: var(--accent);
         }
 
+        /* --- PESTAÑAS Y MULTIMEDIA --- */
+        .gallery-tabs {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            color: var(--text-muted);
+            cursor: crosshair;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed transparent;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            color: var(--accent);
+            border-bottom: 1px dashed var(--accent);
+        }
+
         .visual-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
         }
 
-        .visual-grid img {
+        .visual-grid img, .visual-grid iframe {
             width: 100%;
             height: 250px;
             object-fit: cover;
             border: 1px solid var(--border);
             filter: grayscale(80%) contrast(110%) brightness(70%);
             transition: all 0.4s ease;
-            cursor: pointer; /* Cambia el cursor a una manito para indicar que es clickeable */
+            cursor: pointer;
         }
 
-        .visual-grid img:hover {
+        .visual-grid img:hover, .visual-grid iframe:hover {
             filter: grayscale(0%) contrast(100%) brightness(100%);
             border-color: var(--accent);
             transform: scale(1.02);
@@ -216,9 +240,9 @@
             background-color: rgba(255, 255, 255, 0.05);
         }
 
-        /* --- ESTILOS PARA EL VISOR DE IMÁGENES (LIGHTBOX) --- */
+        /* --- ESTILOS PARA EL VISOR MODAL (SOLO FOTOS) --- */
         .modal {
-            display: none; /* Oculto por defecto */
+            display: none;
             position: fixed;
             z-index: 1000;
             left: 0;
@@ -226,7 +250,7 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(5px); /* Efecto borroso en el fondo */
+            backdrop-filter: blur(5px);
             justify-content: center;
             align-items: center;
         }
@@ -253,6 +277,7 @@
             font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
+            z-index: 1001;
         }
 
         .close-modal:hover {
@@ -281,10 +306,17 @@
             <p>Como miembro fundador de los colectivos Dark Resistance, Altered States y Viper Bol, ha dedicado años a cimentar la escena desde sus bases. Además, es director creativo y conceptual de Proton.2050, así como cofundador de Kluxter Bol (Potosí). Es un promotor clave del género Hard Dance y música electrónica en Bolivia, destacando por su técnica de mezcla precisa y versatilidad técnica.</p>
         </section>
 
-        <!-- GALERÍA VISUAL -->
+        <!-- GALERÍA MULTIMEDIA Y VIDEOS -->
         <section id="galeria">
-            <h2>Registro Fotográfico</h2>
-            <div class="visual-grid">
+            <h2>Archivo Multimedia</h2>
+            
+            <div class="gallery-tabs">
+                <span class="tab-btn active" id="btn-photos" onmouseenter="switchTab('photos')">[ FOTOGRAFÍAS ]</span>
+                <span class="tab-btn" id="btn-videos" onmouseenter="switchTab('videos')">[ VIDEOCLIPS ]</span>
+            </div>
+
+            <!-- CUADRÍCULA DE FOTOS -->
+            <div id="tab-photos" class="visual-grid">
                 <img src="web-poimandres/651013150_18031266488788200_2370242049409830588_n.jpg">
                 <img src="web-poimandres/651231780_18031266506788200_1978230341191308344_n.jpg">
                 <img src="web-poimandres/DSC00819.JPG">
@@ -295,8 +327,22 @@
                 <img src="web-poimandres/DSC00955.JPG">
                 <img src="web-poimandres/photo_2023-07-10_05-55-15.jpg">
                 <img src="web-poimandres/photo_2025-03-17_00-03-02.jpg">
+                <img src="web-poimandres/photo_2026-09-26_01-26-19.jpg">
             </div>
-            <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-muted);">Pasa el cursor sobre las imágenes para ver el color original. Haz clic para expandir.</p>
+
+            <!-- CUADRÍCULA DE VIDEOS (Vimeo Integrado) -->
+            <div id="tab-videos" class="visual-grid" style="display: none;">
+                <iframe src="https://player.vimeo.com/video/1230438933?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://player.vimeo.com/video/1230438966?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://player.vimeo.com/video/1230438930?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://player.vimeo.com/video/1230438887?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://player.vimeo.com/video/1230438595?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://player.vimeo.com/video/1230438820?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://player.vimeo.com/video/1230438863?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://player.vimeo.com/video/1230438596?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-muted);">Pasa el cursor sobre las pestañas para intercambiar. Haz clic en las imágenes o usa los controles del video para expandirlos.</p>
         </section>
 
         <!-- ENFOQUE SONORO -->
@@ -411,10 +457,10 @@
         <!-- CONTACTO Y REDES -->
         <footer>
             <div class="social-links">
-                <a href="https://www.facebook.com/bryan.quirogagomez.35" target="_blank">Facebook</a>
+                <a href="TU_LINK_AQUI" target="_blank">Facebook</a>
                 <a href="https://www.instagram.com/buzzkill.poi" target="_blank">Instagram</a>
-                <a href="https://www.mixcloud.com/bryan-quiroga-gomez/" target="_blank">Mixcloud</a>
-                <a href="https://wa.me/59163725473" target="_blank">WhatsApp</a>
+                <a href="TU_LINK_AQUI" target="_blank">Mixcloud</a>
+                <a href="https://wa.me/59163725374" target="_blank">WhatsApp</a>
             </div>
             <p style="margin-top: 30px; font-size: 0.8rem; color: var(--border);">© 2026 Poimandres</p>
         </footer>
@@ -422,32 +468,53 @@
     </div>
 
     <!-- CONTENEDOR DEL VISOR DE IMÁGENES -->
-    <div id="imageModal" class="modal">
+    <div id="mediaModal" class="modal">
         <span class="close-modal">&times;</span>
-        <img class="modal-content" id="modalImg">
+        <img class="modal-content" id="modalImg" style="display: none;">
     </div>
 
-    <!-- SCRIPT PARA EL FUNCIONAMIENTO DEL VISOR -->
+    <!-- SCRIPT PARA PESTAÑAS Y VISOR -->
     <script>
-        const modal = document.getElementById("imageModal");
+        // Función para cambiar de pestaña al pasar el cursor
+        function switchTab(tab) {
+            const tabPhotos = document.getElementById('tab-photos');
+            const tabVideos = document.getElementById('tab-videos');
+            const btnPhotos = document.getElementById('btn-photos');
+            const btnVideos = document.getElementById('btn-videos');
+
+            if (tab === 'photos') {
+                tabPhotos.style.display = 'grid';
+                tabVideos.style.display = 'none';
+                btnPhotos.classList.add('active');
+                btnVideos.classList.remove('active');
+            } else {
+                tabPhotos.style.display = 'none';
+                tabVideos.style.display = 'grid';
+                btnPhotos.classList.remove('active');
+                btnVideos.classList.add('active');
+            }
+        }
+
+        // Lógica del Lightbox (Solo para fotos, Vimeo maneja sus propios videos)
+        const modal = document.getElementById("mediaModal");
         const modalImg = document.getElementById("modalImg");
         const closeBtn = document.getElementsByClassName("close-modal")[0];
         const images = document.querySelectorAll(".visual-grid img");
 
-        // Al hacer clic en cualquier foto de la galería
         images.forEach(img => {
             img.addEventListener("click", function() {
                 modal.style.display = "flex";
-                modalImg.src = this.src; // Pone la ruta de la foto clickeada en la imagen grande
+                modalImg.style.display = "block";
+                modalImg.src = this.src;
             });
         });
 
-        // Al hacer clic en la "X"
+        // Cerrar modal al tocar la X
         closeBtn.addEventListener("click", function() {
             modal.style.display = "none";
         });
 
-        // Al hacer clic en cualquier parte fuera de la imagen (el fondo oscuro)
+        // Cerrar modal al tocar el fondo negro
         modal.addEventListener("click", function(event) {
             if (event.target !== modalImg) {
                 modal.style.display = "none";
