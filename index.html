@@ -48,7 +48,7 @@
             pointer-events: none;
         }
 
-        /* --- MENÚ LATERAL --- */
+        /* --- MENÚ LATERAL IZQUIERDO --- */
         #menu-toggle {
             position: fixed;
             top: 20px;
@@ -105,6 +105,7 @@
             text-decoration: none;
             font-size: 0.95rem;
             transition: all 0.2s;
+            cursor: pointer;
         }
 
         .sidebar-link:hover {
@@ -114,10 +115,106 @@
             border-left: 3px solid var(--accent);
         }
 
+        /* --- PANEL LATERAL DERECHO (BLOG & PROYECTOS) --- */
+        #right-panel {
+            position: fixed;
+            top: 0;
+            right: -50vw; /* Oculto por defecto */
+            width: 50vw; /* Ocupa exactamente la mitad de la pantalla */
+            height: 100vh;
+            background: #080808;
+            border-left: 1px solid var(--border);
+            z-index: 1005;
+            transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            overflow-y: auto;
+            box-shadow: -10px 0 40px rgba(0,0,0,0.9);
+            padding: 60px 40px 40px 40px;
+        }
+
+        #right-panel.open {
+            right: 0;
+        }
+
+        #close-right-panel {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 35px;
+            cursor: pointer;
+            transition: color 0.3s;
+            font-family: monospace;
+        }
+
+        #close-right-panel:hover {
+            color: var(--accent);
+        }
+
+        .rp-header {
+            display: flex;
+            gap: 30px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+        }
+
+        .rp-tab {
+            color: var(--text-muted);
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .rp-tab.active, .rp-tab:hover {
+            color: var(--accent);
+        }
+
+        .rp-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .rp-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .project-item {
+            margin-bottom: 30px;
+            background: #0a0a0a;
+            border-left: 2px solid var(--border);
+            padding: 20px;
+        }
+        
+        .project-title {
+            color: var(--accent);
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* En pantallas móviles el panel derecho ocupará el 100% para poder leerlo bien */
+        @media (max-width: 768px) {
+            #right-panel {
+                width: 100vw;
+                right: -100vw;
+                padding: 60px 20px 20px 20px;
+            }
+        }
+
+        /* --- CONTENEDOR PRINCIPAL --- */
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 80px 20px 50px 20px; /* Margen superior ajustado para el botón del menú */
+            padding: 80px 20px 50px 20px;
         }
 
         header {
@@ -314,7 +411,7 @@
         .modal {
             display: none;
             position: fixed;
-            z-index: 1000;
+            z-index: 1500;
             left: 0;
             top: 0;
             width: 100%;
@@ -347,7 +444,7 @@
             font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
-            z-index: 1001;
+            z-index: 1501;
         }
 
         .close-modal:hover {
@@ -360,7 +457,7 @@
     <!-- BOTÓN MENÚ -->
     <button id="menu-toggle">☰ MENÚ</button>
 
-    <!-- SIDEBAR / MENÚ LATERAL -->
+    <!-- SIDEBAR / MENÚ LATERAL IZQUIERDO -->
     <nav id="sidebar">
         <div class="sidebar-category">Identidad</div>
         <a href="#biografia" class="sidebar-link">Biografía</a>
@@ -376,9 +473,50 @@
         <a href="#rider" class="sidebar-link">Rider Técnico</a>
         
         <div class="sidebar-category">Contenido</div>
-        <a href="#blog" class="sidebar-link">Blog Personal</a>
+        <!-- Enlace modificado para abrir el panel derecho -->
+        <a id="btn-open-blog" class="sidebar-link">Blog & Proyectos</a>
     </nav>
 
+    <!-- PANEL LATERAL DERECHO (BLOG Y PROYECTOS) -->
+    <div id="right-panel">
+        <button id="close-right-panel">&times;</button>
+        
+        <div class="rp-header">
+            <span class="rp-tab active" onclick="switchRightTab('blog')">Blog</span>
+            <span class="rp-tab" onclick="switchRightTab('proyectos')">Proyectos</span>
+        </div>
+
+        <!-- CONTENIDO: BLOG -->
+        <div id="rp-blog" class="rp-content active">
+            <h3 style="color: var(--accent); margin-top: 0;">[ SISTEMA EN DESARROLLO ]</h3>
+            <p style="color: var(--text-muted);">Espacio dedicado a la investigación, desarrollo cultural y reflexiones sobre el panorama de la música electrónica underground, la ciencia y la técnica del sonido. Los artículos, análisis de equipos y crónicas estarán disponibles próximamente.</p>
+        </div>
+
+        <!-- CONTENIDO: PROYECTOS -->
+        <div id="rp-proyectos" class="rp-content">
+            <div class="project-item">
+                <div class="project-title">Proton.2050</div>
+                <p>Dirección conceptual de plataforma cultural y revista digital. Fusión de música electrónica, ciencia y arte underground enfocada en dar visibilidad al talento artístico e ingenieril.</p>
+            </div>
+            
+            <div class="project-item">
+                <div class="project-title">Rave Nativa (021Proton)</div>
+                <p>Organización de evento rave comunitario de acceso libre. Diseño de escenarios multi-colectivo y desarrollo logístico para un encuentro inmersivo en la cultura electrónica.</p>
+            </div>
+            
+            <div class="project-item">
+                <div class="project-title">STRET HARD</div>
+                <p>Desarrollo conceptual de un colectivo urbano en Cochabamba enfocado en la intersección de la cultura street, la estética Y2K y la música electrónica.</p>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title">Programa de Formación DJ</div>
+                <p>Desarrollo de un currículo estructurado enfocado en fundamentos de audio técnico, curaduría musical rigurosa y dominio de equipos analógicos y digitales.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENEDOR PRINCIPAL -->
     <div class="container">
         
         <!-- CABECERA -->
@@ -538,15 +676,6 @@
             </ul>
         </section>
 
-        <!-- BLOG PERSONAL (NUEVO) -->
-        <section id="blog">
-            <h2>Blog Personal</h2>
-            <div class="interview-block" style="text-align: center; border-left: none; border-top: 1px dashed var(--border);">
-                <h3 style="margin-top: 0; color: var(--accent);">[ SISTEMA EN DESARROLLO ]</h3>
-                <p style="color: var(--text-muted); text-align: center; margin-bottom: 0;">Espacio dedicado a la investigación, desarrollo cultural y reflexiones sobre el panorama de la música electrónica underground, la ciencia y la técnica del sonido. Los artículos, análisis de equipos y crónicas estarán disponibles próximamente.</p>
-            </div>
-        </section>
-
         <!-- CONTACTO Y REDES -->
         <footer>
             <div class="social-links">
@@ -567,9 +696,9 @@
         <img class="modal-content" id="modalImg" style="display: none;">
     </div>
 
-    <!-- SCRIPT PARA PESTAÑAS, VISOR Y MENÚ LATERAL -->
+    <!-- SCRIPT PARA INTERACCIONES -->
     <script>
-        // Lógica del Menú Lateral
+        // --- 1. Lógica del Menú Lateral Izquierdo ---
         const menuToggle = document.getElementById('menu-toggle');
         const sidebar = document.getElementById('sidebar');
         const sidebarLinks = document.querySelectorAll('.sidebar-link');
@@ -583,15 +712,53 @@
             }
         });
 
-        // Cerrar menú automáticamente al hacer clic en un enlace de navegación
+        // Cerrar menú izquierdo al hacer clic en enlaces normales
         sidebarLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                sidebar.classList.remove('open');
-                menuToggle.textContent = '☰ MENÚ';
-            });
+            if(link.id !== 'btn-open-blog') {
+                link.addEventListener('click', () => {
+                    sidebar.classList.remove('open');
+                    menuToggle.textContent = '☰ MENÚ';
+                });
+            }
         });
 
-        // Función para cambiar de pestaña al pasar el cursor o hacer clic
+        // --- 2. Lógica del Panel Lateral Derecho (Blog y Proyectos) ---
+        const rightPanel = document.getElementById('right-panel');
+        const btnOpenBlog = document.getElementById('btn-open-blog');
+        const closeRightPanel = document.getElementById('close-right-panel');
+
+        btnOpenBlog.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Cierra el menú izquierdo si estaba abierto
+            sidebar.classList.remove('open');
+            menuToggle.textContent = '☰ MENÚ';
+            
+            // Abre el panel derecho
+            rightPanel.classList.add('open');
+        });
+
+        closeRightPanel.addEventListener('click', () => {
+            rightPanel.classList.remove('open');
+        });
+
+        // Cambio de pestañas dentro del panel derecho
+        function switchRightTab(tabName) {
+            const contents = document.querySelectorAll('.rp-content');
+            const tabs = document.querySelectorAll('.rp-tab');
+
+            contents.forEach(content => content.classList.remove('active'));
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            document.getElementById('rp-' + tabName).classList.add('active');
+            
+            if(tabName === 'blog') {
+                tabs[0].classList.add('active');
+            } else {
+                tabs[1].classList.add('active');
+            }
+        }
+
+        // --- 3. Lógica de Galería Multimedia (Fotos/Videos) ---
         function switchTab(tab) {
             const tabPhotos = document.getElementById('tab-photos');
             const tabVideos = document.getElementById('tab-videos');
@@ -611,7 +778,7 @@
             }
         }
 
-        // Lógica del Lightbox (Solo para fotos)
+        // --- 4. Lógica del Lightbox (Solo para fotos) ---
         const modal = document.getElementById("mediaModal");
         const modalImg = document.getElementById("modalImg");
         const closeBtn = document.getElementsByClassName("close-modal")[0];
@@ -625,12 +792,10 @@
             });
         });
 
-        // Cerrar modal al tocar la X
         closeBtn.addEventListener("click", function() {
             modal.style.display = "none";
         });
 
-        // Cerrar modal al tocar el fondo negro
         modal.addEventListener("click", function(event) {
             if (event.target !== modalImg) {
                 modal.style.display = "none";
