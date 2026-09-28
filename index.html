@@ -21,6 +21,10 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
@@ -44,10 +48,76 @@
             pointer-events: none;
         }
 
+        /* --- MENÚ LATERAL --- */
+        #menu-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background: var(--bg-color);
+            border: 1px solid var(--border);
+            color: var(--accent);
+            padding: 10px 15px;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        #menu-toggle:hover {
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 260px;
+            height: 100vh;
+            background: #0a0a0a;
+            border-right: 1px solid var(--border);
+            z-index: 1000;
+            transition: left 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            padding-top: 80px;
+            overflow-y: auto;
+            box-shadow: 10px 0 30px rgba(0,0,0,0.8);
+        }
+
+        #sidebar.open {
+            left: 0;
+        }
+
+        .sidebar-category {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 25px 20px 10px 20px;
+            border-bottom: 1px dashed var(--border);
+            padding-bottom: 5px;
+        }
+
+        .sidebar-link {
+            display: block;
+            color: var(--text-main);
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+
+        .sidebar-link:hover {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+            padding-left: 25px;
+            border-left: 3px solid var(--accent);
+        }
+
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 50px 20px;
+            padding: 80px 20px 50px 20px; /* Margen superior ajustado para el botón del menú */
         }
 
         header {
@@ -240,7 +310,7 @@
             background-color: rgba(255, 255, 255, 0.05);
         }
 
-        /* --- ESTILOS PARA EL VISOR MODAL (SOLO FOTOS) --- */
+        /* --- ESTILOS PARA EL VISOR MODAL --- */
         .modal {
             display: none;
             position: fixed;
@@ -283,15 +353,36 @@
         .close-modal:hover {
             color: var(--accent);
         }
-
     </style>
 </head>
 <body>
 
+    <!-- BOTÓN MENÚ -->
+    <button id="menu-toggle">☰ MENÚ</button>
+
+    <!-- SIDEBAR / MENÚ LATERAL -->
+    <nav id="sidebar">
+        <div class="sidebar-category">Identidad</div>
+        <a href="#biografia" class="sidebar-link">Biografía</a>
+        <a href="#filosofia" class="sidebar-link">Filosofía Sonora</a>
+        <a href="#entrevista" class="sidebar-link">Manifiesto</a>
+        
+        <div class="sidebar-category">Portafolio</div>
+        <a href="#galeria" class="sidebar-link">Archivo Multimedia</a>
+        <a href="#generos" class="sidebar-link">Espectro Musical</a>
+        <a href="#trayectoria" class="sidebar-link">Trayectoria</a>
+        
+        <div class="sidebar-category">Técnico</div>
+        <a href="#rider" class="sidebar-link">Rider Técnico</a>
+        
+        <div class="sidebar-category">Contenido</div>
+        <a href="#blog" class="sidebar-link">Blog Personal</a>
+    </nav>
+
     <div class="container">
         
         <!-- CABECERA -->
-        <header>
+        <header id="inicio">
             <h1>POIMANDRES</h1>
             <div class="subtitle">
                 Bryan Antonio Quiroga Gomez<br>
@@ -317,19 +408,19 @@
 
             <!-- CUADRÍCULA DE FOTOS -->
             <div id="tab-photos" class="visual-grid">
-                <img src="web-poimandres/651013150_18031266488788200_2370242049409830588_n.jpg">
-                <img src="web-poimandres/651231780_18031266506788200_1978230341191308344_n.jpg">
-                <img src="web-poimandres/DSC00819.JPG">
-                <img src="web-poimandres/DSC00820.JPG">
-                <img src="web-poimandres/DSC00834.JPG">
-                <img src="web-poimandres/DSC00853.JPG">
-                <img src="web-poimandres/DSC00940.JPG">
-                <img src="web-poimandres/DSC00955.JPG">
-                <img src="web-poimandres/photo_2023-07-10_05-55-15.jpg">
-                <img src="web-poimandres/photo_2025-03-17_00-03-02.jpg">
+                <img src="web-poimandres/651013150_18031266488788200_2370242049409830588_n.jpg" alt="Poimandres Photo">
+                <img src="web-poimandres/651231780_18031266506788200_1978230341191308344_n.jpg" alt="Poimandres Photo">
+                <img src="web-poimandres/DSC00819.JPG" alt="Poimandres Photo">
+                <img src="web-poimandres/DSC00820.JPG" alt="Poimandres Photo">
+                <img src="web-poimandres/DSC00834.JPG" alt="Poimandres Photo">
+                <img src="web-poimandres/DSC00853.JPG" alt="Poimandres Photo">
+                <img src="web-poimandres/DSC00940.JPG" alt="Poimandres Photo">
+                <img src="web-poimandres/DSC00955.JPG" alt="Poimandres Photo">
+                <img src="web-poimandres/photo_2023-07-10_05-55-15.jpg" alt="Poimandres Photo">
+                <img src="web-poimandres/photo_2025-03-17_00-03-02.jpg" alt="Poimandres Photo">
             </div>
 
-            <!-- CUADRÍCULA DE VIDEOS (Vimeo Integrado) -->
+            <!-- CUADRÍCULA DE VIDEOS -->
             <div id="tab-videos" class="visual-grid" style="display: none;">
                 <iframe src="https://player.vimeo.com/video/1230438933?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                 <iframe src="https://player.vimeo.com/video/1230438966?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
@@ -395,7 +486,7 @@
                 <div class="genre-tag">Break Beat</div>
                 <div class="genre-tag">IDM</div>
                 <div class="genre-tag">EBM</div>
-                <div class="genre-tag">Future Base</div>
+                <div class="genre-tag">Future Bass</div>
                 <div class="genre-tag">Acid</div>
                 <div class="genre-tag">Industrial</div>
                 <div class="genre-tag">Forest</div>
@@ -417,14 +508,14 @@
 
             <h3>Eventos Organizados</h3>
             <p style="padding-left: 15px; color: var(--text-muted);">
-                K.E.P.L.E.R., BraveRave, Carne a Baal, NEBULA electro fest, Hypnotic Dance, Climax, Baraunda, Techno Oscuro, LariLari, Hidden Tech, Tata Danzanti, Valera, Valkyria, Bailoteo, Laberinto sonoro, Proton Sesions, sesiones de escucha activa, coffee party.
+                K.E.P.L.E.R., Brave Rave, Carne a Baal, NEBULA electro fest, Hypnotic Dance, Climax, Baraunda, Techno Oscuro, LariLari, Hidden Tech, Tata Danzanti, Valera, Valkyria, Bailoteo, Laberinto sonoro, Proton Sessions, sesiones de escucha activa, coffee party.
             </p>
 
             <h3>Presentaciones Destacadas</h3>
             <ul>
-                <li>RCA- Electro Preste (La Paz)</li>
-                <li>Sumjork Fest (Potosí)</li>
-                <li>Preste by Hipe (Potosí)</li>
+                <li>RCA - Electro Preste (La Paz)</li>
+                <li>Sunjork Fest (Potosí)</li>
+                <li>Preste by Hype (Potosí)</li>
                 <li>Celina (La Paz)</li>
                 <li>Suapi Ufo (La Paz)</li>
                 <li>Imaynalla (Sucre)</li>
@@ -433,13 +524,6 @@
                 <li>Bass Equinox (Cochabamba)</li>
                 <li>Barranco Live</li>
             </ul>
-
-            <h3>Próximos Proyectos</h3>
-            <ul>
-                <li>[ PRÓXIMAMENTE... ]</li>
-                <li>[ PRÓXIMAMENTE... ]</li>
-                <li>[ PRÓXIMAMENTE... ]</li>
-            </ul>
         </section>
 
         <!-- RIDER TÉCNICO COMPLETO -->
@@ -447,11 +531,20 @@
             <h2>Rider Técnico</h2>
             <ul>
                 <li><span class="highlight-text">Setup Estándar:</span> Mixer analógico y compacteras disponibles. (Se requiere aviso previo para el uso de CDs).</li>
-                <li><span class="highlight-text">Setup Performance:</span> 1 par de entradas estéreo (RCA/TS/TRS) para conectar equipos propios (Mixer Behringer Nox303/606, Efecteras Behringer TWEK ALIZER, Tarjeta de audio Traktor 8, Laptop, Teclado MIDI).</li>
+                <li><span class="highlight-text">Setup Performance:</span> 1 par de entradas estéreo (RCA/TS/TRS) para conectar equipos propios (Mixer Behringer Nox303/606, Efecteras Behringer Tweakalizer, Tarjeta de audio Traktor 8, Laptop, Teclado MIDI).</li>
                 <li><span class="highlight-text">Tiempos de Set (Headliner / Close Liner):</span> Mínimo 90 minutos.</li>
                 <li><span class="highlight-text">Tiempos de Set (Warm Up):</span> Mínimo 3 horas (incluye asistencia en prueba de sonido).</li>
                 <li><span class="highlight-text">Hospitalidad:</span> 1 botella de agua y 1 cenicero.</li>
             </ul>
+        </section>
+
+        <!-- BLOG PERSONAL (NUEVO) -->
+        <section id="blog">
+            <h2>Blog Personal</h2>
+            <div class="interview-block" style="text-align: center; border-left: none; border-top: 1px dashed var(--border);">
+                <h3 style="margin-top: 0; color: var(--accent);">[ SISTEMA EN DESARROLLO ]</h3>
+                <p style="color: var(--text-muted); text-align: center; margin-bottom: 0;">Espacio dedicado a la investigación, desarrollo cultural y reflexiones sobre el panorama de la música electrónica underground, la ciencia y la técnica del sonido. Los artículos, análisis de equipos y crónicas estarán disponibles próximamente.</p>
+            </div>
         </section>
 
         <!-- CONTACTO Y REDES -->
@@ -461,6 +554,7 @@
                 <a href="https://www.instagram.com/buzzkill.poi" target="_blank">Instagram</a>
                 <a href="TU_LINK_AQUI" target="_blank">Mixcloud</a>
                 <a href="https://wa.me/59163725374" target="_blank">WhatsApp</a>
+                <a href="https://github.com/poimandres777" target="_blank">GitHub</a>
             </div>
             <p style="margin-top: 30px; font-size: 0.8rem; color: var(--border);">© 2026 Poimandres</p>
         </footer>
@@ -473,8 +567,30 @@
         <img class="modal-content" id="modalImg" style="display: none;">
     </div>
 
-    <!-- SCRIPT PARA PESTAÑAS Y VISOR -->
+    <!-- SCRIPT PARA PESTAÑAS, VISOR Y MENÚ LATERAL -->
     <script>
+        // Lógica del Menú Lateral
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+            if(sidebar.classList.contains('open')) {
+                menuToggle.textContent = '✕ CERRAR';
+            } else {
+                menuToggle.textContent = '☰ MENÚ';
+            }
+        });
+
+        // Cerrar menú automáticamente al hacer clic en un enlace de navegación
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                sidebar.classList.remove('open');
+                menuToggle.textContent = '☰ MENÚ';
+            });
+        });
+
         // Función para cambiar de pestaña al pasar el cursor o hacer clic
         function switchTab(tab) {
             const tabPhotos = document.getElementById('tab-photos');
@@ -495,7 +611,7 @@
             }
         }
 
-        // Lógica del Lightbox (Solo para fotos, Vimeo maneja sus propios videos)
+        // Lógica del Lightbox (Solo para fotos)
         const modal = document.getElementById("mediaModal");
         const modalImg = document.getElementById("modalImg");
         const closeBtn = document.getElementsByClassName("close-modal")[0];
