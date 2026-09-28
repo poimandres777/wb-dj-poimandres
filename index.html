@@ -13,6 +13,16 @@
             --text-muted: #888888;
             --accent: #ffffff;
             --border: #222222;
+            
+            /* === ESTÉTICA PROTON.2050 // INDUSTRIAL & CYBERPUNK === */
+            --bg-terminal: #070707;
+            --text-primary: #e0e0e0;
+            --text-dim: #888888;
+            --accent-acid: #ccff00; /* Verde/Amarillo ácido */
+            --accent-alert: #ff003c; /* Rojo alerta */
+            --border-dim: #333333;
+            --font-mono: 'Courier New', Courier, monospace;
+            --font-sans: 'Helvetica Neue', Arial, sans-serif;
         }
 
         * {
@@ -126,8 +136,8 @@
         #right-panel {
             position: fixed;
             top: 0;
-            right: -50vw; /* Oculto por defecto */
-            width: 50vw; /* Ocupa exactamente la mitad de la pantalla */
+            right: -50vw;
+            width: 50vw;
             height: 100vh;
             background: #080808;
             border-left: 1px solid var(--border);
@@ -194,18 +204,126 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .project-item {
-            margin-bottom: 30px;
-            background: #0a0a0a;
-            border-left: 2px solid var(--border);
-            padding: 20px;
+        /* --- ESTILOS DE PROYECTOS (ESTÉTICA PROTON.2050) --- */
+        .proton-portfolio {
+            background-color: var(--bg-terminal);
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            border: 1px solid var(--border-dim);
         }
-        
-        .project-title {
-            color: var(--accent);
+
+        .proton-portfolio h1.log-title {
+            font-family: var(--font-sans);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid var(--accent-acid);
+            padding-bottom: 10px;
+            margin-bottom: 3rem;
+            color: #ffffff;
+            font-size: 2rem;
+        }
+
+        .project-log {
+            border-left: 2px solid var(--border-dim);
+            padding-left: 1.5rem;
+            margin-bottom: 3.5rem;
+            position: relative;
+            transition: border-color 0.3s ease;
+        }
+
+        .project-log:hover {
+            border-left-color: var(--accent-acid);
+        }
+
+        .project-log::before {
+            content: '>';
+            position: absolute;
+            left: -12px;
+            top: 0;
+            color: var(--accent-acid);
+            background: var(--bg-terminal);
+            padding: 2px 0;
             font-weight: bold;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
+            font-family: var(--font-mono);
+        }
+
+        .project-name {
+            font-family: var(--font-sans);
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-sys-data {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            background-color: #111;
+            padding: 0.8rem;
+            border: 1px solid #222;
+        }
+
+        .project-sys-data strong {
+            color: var(--text-primary);
+        }
+
+        .project-concept {
+            font-style: italic;
+            color: #aaaaaa;
+            border-left: 2px solid var(--accent-alert);
+            padding-left: 10px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-desc {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .project-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .project-links li a {
+            color: var(--accent-acid);
+            text-decoration: none;
+            border: 1px solid var(--border-dim);
+            padding: 0.4rem 0.8rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .project-links li a:hover {
+            background-color: var(--accent-acid);
+            color: var(--bg-terminal);
+            border-color: var(--accent-acid);
+        }
+
+        .list-formats {
+            list-style-type: square;
+            padding-left: 1.5rem;
+            color: var(--accent-acid);
+        }
+
+        .list-formats li span {
+            color: var(--text-primary);
         }
 
         @media (max-width: 768px) {
@@ -217,6 +335,9 @@
             #top-nav {
                 flex-direction: column;
                 gap: 5px;
+            }
+            .proton-portfolio {
+                padding: 1rem;
             }
         }
 
@@ -503,24 +624,155 @@
 
         <!-- CONTENIDO: PROYECTOS -->
         <div id="rp-proyectos" class="rp-content">
-            <div class="project-item">
-                <div class="project-title">Proton.2050</div>
-                <p>Dirección conceptual de plataforma cultural y revista digital. Fusión de música electrónica, ciencia y arte underground enfocada en dar visibilidad al talento artístico e ingenieril.</p>
-            </div>
-            
-            <div class="project-item">
-                <div class="project-title">Rave Nativa (021Proton)</div>
-                <p>Organización de evento rave comunitario de acceso libre. Diseño de escenarios multi-colectivo y desarrollo logístico para un encuentro inmersivo en la cultura electrónica.</p>
-            </div>
-            
-            <div class="project-item">
-                <div class="project-title">capsulas</div>
-                <p>proximamente.</p>
-            </div>
+            <div class="proton-portfolio">
+                <h1 class="log-title">Proyectos // Data Log</h1>
 
-            <div class="project-item">
-                <div class="project-title">Programa de Formación DJ</div>
-                <p>Desarrollo de un currículo estructurado enfocado en fundamentos de audio técnico, curaduría musical rigurosa y dominio de equipos analógicos y digitales.</p>
+                <!-- 01 / PROGRAMA DE FORMACIÓN DJ -->
+                <article class="project-log">
+                    <h2 class="project-name">01 / Programa de Formación DJ</h2>
+                    <div class="project-sys-data">
+                        <div><strong>ESTADO:</strong> En desarrollo [Fase de cápsulas]</div>
+                    </div>
+                    <div class="project-desc">
+                        <p>Desarrollo de un currículo estructurado y metódico, enfocado en tres pilares: fundamentos de audio técnico, curaduría musical rigurosa y dominio absoluto de hardware analógico y digital.</p>
+                    </div>
+                    <ul class="project-links">
+                        <li><a href="tel:+59163725473">Contacto Directo: +591 63725473</a></li>
+                    </ul>
+                </article>
+
+                <!-- 02 / SISTEMA DE SONIDO LA ONDA -->
+                <article class="project-log">
+                    <h2 class="project-name">02 / Sistema de Sonido La Onda</h2>
+                    <div class="project-sys-data">
+                        <div><strong>FUNDACIÓN:</strong> 2025</div>
+                        <div><strong>POR:</strong> Bryan Quiroga [Poimandres] & Sebastian Ledezma [Ledi]</div>
+                    </div>
+                    <div class="project-concept">La calidad no es una opción.</div>
+                    <div class="project-desc">
+                        <p><strong>Contexto:</strong> Durante nuestra exploración sonora, evidenciamos la nula capacidad del circuito local para equilibrar acústicamente los eventos. A partir de esa falla, abrimos La Onda: un sistema de sonido con un objetivo claro: brindar una experiencia sonora de alta fidelidad, priorizando la salud auditiva del público. Realizamos estudios de acústica y calibración de sistemas adaptados a las necesidades espaciales del entorno, democratizando el acceso a un sonido óptimo sin necesidad de cobrar sumas exorbitantes.</p>
+                    </div>
+                    <ul class="project-links">
+                        <li><a href="https://www.instagram.com/la_onda_s.s/" target="_blank">IG: La Onda</a></li>
+                        <li><a href="https://www.instagram.com/ledi.aiff/" target="_blank">IG: Ledi</a></li>
+                        <li><a href="https://www.instagram.com/buzzkill.poi/" target="_blank">IG: Poimandres</a></li>
+                    </ul>
+                </article>
+
+                <!-- 03 / PROTON.2050 -->
+                <article class="project-log">
+                    <h2 class="project-name">03 / Proton.2050 [Por colectivo Hydra]</h2>
+                    <div class="project-sys-data">
+                        <div><strong>INICIO:</strong> 2026</div>
+                        <div><strong>DIRECCIÓN ACTUAL:</strong> Poimandres</div>
+                    </div>
+                    <div class="project-desc">
+                        <p><strong>Contexto:</strong> Revista y plataforma digital en la intersección de la música electrónica, la ciencia y el arte underground. Su objetivo principal es documentar y difundir el detrás de escena de la maquinaria y los eventos organizados por el colectivo Hydra.</p>
+                    </div>
+                    <ul class="project-links">
+                        <li><a href="https://www.instagram.com/proton.2050/" target="_blank">IG: Proton.2050</a></li>
+                    </ul>
+                </article>
+
+                <!-- 04 / CAFÉ CULTURAL VIGOR -->
+                <article class="project-log">
+                    <h2 class="project-name">04 / Café Cultural Vigor</h2>
+                    <div class="project-sys-data">
+                        <div><strong>INICIO:</strong> 2026</div>
+                        <div><strong>FUNDACIÓN:</strong> Verónica Gómez e hijos (Viviana Quiroga, Bryan Quiroga, Camila Flores)</div>
+                    </div>
+                    <div class="project-desc">
+                        <p><strong>Contexto:</strong> Espacio creativo concebido como un puente entre las artes, las ciencias y la gastronomía. Actualmente activo, operando como un punto de encuentro familiar, multidisciplinario y accesible para todo público.</p>
+                    </div>
+                    <ul class="project-links">
+                        <li><a href="https://www.instagram.com/vigorcafecultural/" target="_blank">Instagram</a></li>
+                        <li><a href="https://www.tiktok.com/@vigor.cafe.cultural" target="_blank">TikTok</a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=61592738732434" target="_blank">Facebook</a></li>
+                    </ul>
+                </article>
+
+                <!-- 05 / KLUXTER -->
+                <article class="project-log">
+                    <h2 class="project-name">05 / Kluxter</h2>
+                    <div class="project-sys-data">
+                        <div><strong>INICIO:</strong> 2023 | <strong>ESTADO:</strong> Standby</div>
+                        <div><strong>DIRECCIÓN:</strong> Alex Pardo [Pardox] & Bryan Quiroga [Poimandres]</div>
+                    </div>
+                    <div class="project-concept">Alienación, experiencias de otros mundos y viajes interdimensionales.</div>
+                    <div class="project-desc">
+                        <p><strong>Contexto:</strong> Fuimos seleccionados por un grupo de inversionistas anónimos para ejecutar las propuestas audiovisuales más extrañas y extravagantes posibles. Una etapa breve, pero de altísima intensidad. Actualmente nos encontramos a la espera de la señal para desplegar las próximas versiones. Queden atentos.</p>
+                    </div>
+                    <ul class="project-links">
+                        <li><a href="https://www.instagram.com/kluxter.bo/" target="_blank">IG: Kluxter</a></li>
+                        <li><a href="https://www.instagram.com/alex_pardox/" target="_blank">IG: Pardox</a></li>
+                        <li><a href="https://www.instagram.com/buzzkill.poi/" target="_blank">IG: Poimandres</a></li>
+                    </ul>
+                </article>
+
+                <!-- 06 / DARK RESISTANCE -->
+                <article class="project-log">
+                    <h2 class="project-name">06 / Dark Resistance [Potosí]</h2>
+                    <div class="project-sys-data">
+                        <div><strong>INICIO:</strong> 2018 | <strong>ESTADO:</strong> Activo bajo las sombras</div>
+                        <div><strong>DIRECCIÓN ACTUAL:</strong> Poimandres</div>
+                        <div><strong>FUNDADORES:</strong> P.A.C., Crosmode, Poimandres, Vanidades, Tio IBM, Xolinflu</div>
+                    </div>
+                    <div class="project-concept">Rebeldía y anarquismo ético. Bailemos juntos, luchemos juntos.</div>
+                    <div class="project-desc">
+                        <p><strong>Contexto:</strong> Ante un entorno musical carente de carácter para proponer algo diferente, la DR surgió como la respuesta de una generación rechazada por una sociedad saturada de tabúes. En sus inicios, fuimos los principales promotores de géneros como el Hardcore, Industrial Techno, Hard Dance, Cybergoth y la cultura Rave a nivel nacional, con presencia en Potosí, Cochabamba, La Paz y Chuquisaca. No operamos por fama; lo hacemos por puro amor al arte.</p>
+                        <p>Nos caracterizamos por aprovechar los vacíos legales para ejecutar eventos clandestinos; el registro solo existe en la memoria de quienes los viven.</p>
+                        <p><strong>Actualidad:</strong> Ejecución de RAVES COMUNITARIAS. Eventos de autogestión radical donde público y colegas aportan una cuota para cubrir logística. Cada participante asume un rol activo, gestionando un espacio seguro, presión sonora de calidad y la vibra esencial para la sesión en comunidad.</p>
+                    </div>
+                    <ul class="project-links">
+                        <li><a href="https://www.instagram.com/dark_resistance_djs/" target="_blank">Instagram</a></li>
+                        <li><a href="https://www.facebook.com/DarkResistanceDjs" target="_blank">Facebook</a></li>
+                    </ul>
+                </article>
+
+                <!-- 07 / ALTERED STATES -->
+                <article class="project-log">
+                    <h2 class="project-name">07 / Altered States [Sucre]</h2>
+                    <div class="project-sys-data">
+                        <div><strong>INICIO:</strong> 2020 | <strong>ESTADO:</strong> Activo</div>
+                        <div><strong>DIRECCIÓN ACTUAL:</strong> Nino fma & Gianmarco</div>
+                        <div><strong>FUNDADORES:</strong> Nino fma, Gianmarco, Vanidades, Poimandres</div>
+                    </div>
+                    <div class="project-concept">Experimentación sonora y estados alterados de consciencia.</div>
+                    <div class="project-desc">
+                        <p><strong>Contexto:</strong> El minimalismo predominante en Chuquisaca nos tenía hastiados. Decidimos inyectar una propuesta más experimental, explorando géneros diversos sin perder el enfoque en la pista de baile. Desde sus inicios, Altered States buscó generar experiencias inmersivas integrando proyectores, síntesis visual y sonido envolvente. El objetivo: activar el dancefloor y elevar la energía al máximo.</p>
+                    </div>
+                    <ul class="project-links">
+                        <li><a href="https://www.instagram.com/altered.states_/" target="_blank">Instagram</a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=100063523540345" target="_blank">Facebook</a></li>
+                    </ul>
+                </article>
+
+                <!-- 08 / ÍCARO -->
+                <article class="project-log">
+                    <h2 class="project-name">08 / Ícaro [La Paz]</h2>
+                    <div class="project-sys-data">
+                        <div><strong>FUNDADORES:</strong> Pedro de la Riva [Feligna], Sebastian de la Riva, Bryan Quiroga [Poimandres]</div>
+                    </div>
+                    <div class="project-concept">Música intensa, baile intenso en exceso.</div>
+                    <div class="project-desc">
+                        <p><strong>Contexto:</strong> Una etapa errática y visceral donde un grupo de iluminados ejecutó los afters más largos de la ciudad. Durante el breve tiempo que duró el proyecto, entregamos las sesiones más intensas y desquiciadas de La Paz. Sin cámaras: el registro solo quedó en la mente de quienes lo vivieron.</p>
+                    </div>
+                </article>
+
+                <!-- 09 / LÍNEAS DE EVENTOS PERSONALES -->
+                <article class="project-log">
+                    <h2 class="project-name">09 / Líneas de Eventos Personales</h2>
+                    <div class="project-sys-data">
+                        <div><strong>FORMATOS DE EXPLORACIÓN</strong></div>
+                    </div>
+                    <div class="project-desc">
+                        <ul class="list-formats">
+                            <li><span>Barahúnda</span></li>
+                            <li><span>Bailoteo</span></li>
+                            <li><span>Sesiones de escucha activa</span></li>
+                        </ul>
+                    </div>
+                </article>
             </div>
         </div>
     </div>
