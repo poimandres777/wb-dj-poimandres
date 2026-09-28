@@ -18,8 +18,8 @@
             --bg-terminal: #070707;
             --text-primary: #e0e0e0;
             --text-dim: #888888;
-            --accent-acid: #ccff00; /* Verde/Amarillo ácido */
-            --accent-alert: #ff003c; /* Rojo alerta */
+            --accent-acid: #ccff00;
+            --accent-alert: #ff003c;
             --border-dim: #333333;
             --font-mono: 'Courier New', Courier, monospace;
             --font-sans: 'Helvetica Neue', Arial, sans-serif;
@@ -204,7 +204,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- ESTILOS DE PROYECTOS (ESTÉTICA PROTON.2050) --- */
+        /* --- ESTILOS DE DATA LOG (BLOG & PROYECTOS) --- */
         .proton-portfolio {
             background-color: var(--bg-terminal);
             color: var(--text-primary);
@@ -260,6 +260,7 @@
             margin-bottom: 0.5rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            line-height: 1.3;
         }
 
         .project-sys-data {
@@ -289,6 +290,11 @@
             line-height: 1.6;
             margin-bottom: 1.5rem;
             font-size: 0.95rem;
+        }
+
+        .project-desc p {
+            margin-bottom: 1.2rem;
+            text-align: left;
         }
 
         .project-links {
@@ -618,8 +624,46 @@
 
         <!-- CONTENIDO: BLOG -->
         <div id="rp-blog" class="rp-content active">
-            <h3 style="color: var(--accent); margin-top: 0;">[ SISTEMA EN DESARROLLO ]</h3>
-            <p style="color: var(--text-muted);">Espacio dedicado a la investigación, desarrollo cultural y reflexiones sobre el panorama de la música electrónica underground, la ciencia y la técnica del sonido. Los artículos, análisis de equipos y crónicas estarán disponibles próximamente.</p>
+            <div class="proton-portfolio">
+                <h1 class="log-title">Blog // Pensamientos</h1>
+
+                <!-- ENTRADA #1 -->
+                <article class="project-log">
+                    <h2 class="project-name">Pensamiento #1: La falta de criterio y carácter matará la escena nacional.</h2>
+                    <div class="project-sys-data">
+                        <div><strong>FECHA:</strong> Septiembre 2026</div>
+                        <div><strong>AUTOR:</strong> Poimandres</div>
+                    </div>
+                    <div class="project-desc">
+                        <p>Si uno se detiene a observar nuestro panorama cultural y artístico, es fácil notar que las propuestas nuevas emanan sin parar. Saltan, hacen ruido y llenan el espacio. Pero, aunque hay mucho movimiento, la carencia de un criterio sólido está afectando la fluidez y la trascendencia de todo lo que está sucediendo.</p>
+                        
+                        <p>Para explicar esto, quiero usar una metáfora inusual, pero tristemente precisa: la escena nacional es como hacer pipocas.</p>
+                        
+                        <p>Todos los proyectos, colectivos y propuestas emergentes que vemos nacer no son más que granos de maíz lanzados con la esperanza de que revienten. El problema es que Bolivia es como una olla chueca y maltratada; un recipiente que no puede dispersar el calor de manera equilibrada. Organizar eventos o lanzar proyectos sin un enfoque claro y estructurado se convierte en un juego de azar que, a la larga, lastima al movimiento.</p>
+                        
+                        <p>Mientras unos pocos buscan cambiar la olla y atreverse a preparar algo más elaborado, los pipokeros ocupan toda la cocina. Terminan quemando los lugares, desgastando los conceptos y saturando la cultura. Sí, acabo de usar una metáfora de pipocas para exponer la profunda saturación que se anda viviendo en la escena local.</p>
+                        
+                        <p>Ojo, no digo que esto sea intrínsecamente malo. Al final del día, es un proceso inevitable que nace de la necesidad de mostrar cuán diferentes podemos ser. Pero en la práctica, esa diferencia termina siendo mínima. La falta de criterio hace que busquemos repetir fórmulas ya establecidas que sabemos que "funcionan", convirtiéndonos en pipocas para un público que se ha acostumbrado a consumir experiencias momentáneas y vacías de contexto.</p>
+                        
+                        <p>Tener criterio no significa creerse superior; significa tener claro el "por qué" y el "para qué". Para aterrizar esta idea, quiero poner en perspectiva lo que vengo trabajando con Proton.2050. Este proyecto no nació para ser una fiesta más del fin de semana; nació con la intención de ser una plataforma cultural que fusiona la música electrónica, la ciencia y el arte underground. Desde la curaduría musical —enfocada en todos los géneros de Baile Intenso— hasta el desarrollo de un concepto visual y estético propio, cada detalle tiene una razón de ser. Eso marca la diferencia entre lanzar un evento al azar impulsado por el furor del momento, y construir una experiencia que aporte a la cultura.</p>
+                        
+                        <p>Antes de que esto suene a una queja amargada, quiero que se sienta como lo que realmente es: una observación nacida de la empatía. Porque yo, como promotor, también fui una pipoca.</p>
+                        
+                        <p>Comencé en lo mainstream a mis 15 años y caí en esa misma inercia comercial. Pero gracias a esa etapa pude tropezar, absorber el calor de la olla y adquirir los aprendizajes valiosos que me llevaron a terminar inmerso en lo underground. Como consecuencia natural de ese proceso, forjé el carácter necesario para sostener y defender mi visión del arte frente a mi entorno.</p>
+                        
+                        <p>No está mal ser una pipoca al principio; es parte del ensayo y error. Pero conformarse y quedarse ahí, repitiendo la misma fórmula vacía cuando en el fondo sabes que tienes mucho más que ofrecer, es simplemente aberrante.</p>
+                        
+                        <p>Sin embargo, antes de ser demasiado duros con nosotros mismos, hay que reconocer un punto de encuentro que rescata todo este caos. Incluso quienes saturan la escena hoy, en su gran mayoría lo hacen impulsados por una pasión genuina. Sabemos muy bien que apostar por esta cultura en Bolivia no es nada rentable; mi propio camino lo recorro por puro amor a este arte, y sé que muchos de ustedes comparten ese sentimiento.</p>
+                        
+                        <p>Por esto, hago un llamado a toda la comunidad a que canalicemos esa pasión y nos atrevamos a dar el siguiente paso: formemos un criterio sólido, fundamentado en principios reales y cercanos a la verdadera esencia del movimiento Rave. Principios que, al final del día, se resumen en AMOR y RESPETO. Un respeto que va más allá de la tolerancia; implica respetar nuestro espacio, a los artistas y a la audiencia, entregándoles algo trabajado y con verdadero sentido.</p>
+                        
+                        <p>Agradezco mucho tu tiempo de lectura. Si piensas diferente o hay algo que quieras sumar a esta reflexión, házmelo saber. Sigamos la conversación en mi cuenta de Threads:</p>
+                    </div>
+                    <ul class="project-links">
+                        <li><a href="https://www.threads.com/@buzzkill.poi" target="_blank">Debatir en Threads</a></li>
+                    </ul>
+                </article>
+            </div>
         </div>
 
         <!-- CONTENIDO: PROYECTOS -->
@@ -988,7 +1032,7 @@
 
         btnOpenBlog.addEventListener('click', (e) => {
             e.preventDefault();
-            // Cierra el menú izquierdo si estaba abierto para no superponerse
+            // Cierra el menú izquierdo si estaba abierto
             sidebar.classList.remove('open');
             menuToggle.textContent = '☰ MENÚ';
             
