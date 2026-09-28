@@ -48,12 +48,17 @@
             pointer-events: none;
         }
 
-        /* --- MENÚ LATERAL IZQUIERDO --- */
-        #menu-toggle {
+        /* --- NAVEGACIÓN SUPERIOR FIJA --- */
+        #top-nav {
             position: fixed;
             top: 20px;
             left: 20px;
             z-index: 1001;
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
             background: var(--bg-color);
             border: 1px solid var(--border);
             color: var(--accent);
@@ -62,13 +67,15 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 1rem;
             transition: all 0.3s;
+            text-transform: uppercase;
         }
 
-        #menu-toggle:hover {
+        .nav-btn:hover {
             border-color: var(--accent);
             background: rgba(255, 255, 255, 0.05);
         }
 
+        /* --- MENÚ LATERAL IZQUIERDO --- */
         #sidebar {
             position: fixed;
             top: 0;
@@ -201,12 +208,15 @@
             font-size: 1.1rem;
         }
 
-        /* En pantallas móviles el panel derecho ocupará el 100% para poder leerlo bien */
         @media (max-width: 768px) {
             #right-panel {
                 width: 100vw;
                 right: -100vw;
                 padding: 60px 20px 20px 20px;
+            }
+            #top-nav {
+                flex-direction: column;
+                gap: 5px;
             }
         }
 
@@ -214,7 +224,7 @@
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 80px 20px 50px 20px;
+            padding: 90px 20px 50px 20px;
         }
 
         header {
@@ -454,8 +464,11 @@
 </head>
 <body>
 
-    <!-- BOTÓN MENÚ -->
-    <button id="menu-toggle">☰ MENÚ</button>
+    <!-- BOTONES DE NAVEGACIÓN SUPERIOR FIJOS -->
+    <div id="top-nav">
+        <button id="menu-toggle" class="nav-btn">☰ MENÚ</button>
+        <button id="btn-open-blog" class="nav-btn">BLOG & PROYECTOS</button>
+    </div>
 
     <!-- SIDEBAR / MENÚ LATERAL IZQUIERDO -->
     <nav id="sidebar">
@@ -471,10 +484,6 @@
         
         <div class="sidebar-category">Técnico</div>
         <a href="#rider" class="sidebar-link">Rider Técnico</a>
-        
-        <div class="sidebar-category">Contenido</div>
-        <!-- Enlace modificado para abrir el panel derecho -->
-        <a id="btn-open-blog" class="sidebar-link">Blog & Proyectos</a>
     </nav>
 
     <!-- PANEL LATERAL DERECHO (BLOG Y PROYECTOS) -->
@@ -505,8 +514,8 @@
             </div>
             
             <div class="project-item">
-                <div class="project-title">STRET HARD</div>
-                <p>Desarrollo conceptual de un colectivo urbano en Cochabamba enfocado en la intersección de la cultura street, la estética Y2K y la música electrónica.</p>
+                <div class="project-title">capsulas</div>
+                <p>proximamente.</p>
             </div>
 
             <div class="project-item">
@@ -712,14 +721,12 @@
             }
         });
 
-        // Cerrar menú izquierdo al hacer clic en enlaces normales
+        // Cerrar menú izquierdo al hacer clic en enlaces
         sidebarLinks.forEach(link => {
-            if(link.id !== 'btn-open-blog') {
-                link.addEventListener('click', () => {
-                    sidebar.classList.remove('open');
-                    menuToggle.textContent = '☰ MENÚ';
-                });
-            }
+            link.addEventListener('click', () => {
+                sidebar.classList.remove('open');
+                menuToggle.textContent = '☰ MENÚ';
+            });
         });
 
         // --- 2. Lógica del Panel Lateral Derecho (Blog y Proyectos) ---
@@ -729,7 +736,7 @@
 
         btnOpenBlog.addEventListener('click', (e) => {
             e.preventDefault();
-            // Cierra el menú izquierdo si estaba abierto
+            // Cierra el menú izquierdo si estaba abierto para no superponerse
             sidebar.classList.remove('open');
             menuToggle.textContent = '☰ MENÚ';
             
